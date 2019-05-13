@@ -1,0 +1,28 @@
+<!-- ng-template demo -->
+<h3>ng-template Example</h3>
+<p>
+  <input id="radio1" type="radio" name="validate" (click)="changeValue(true)"/> Valid
+  <input id="radio1" type="radio" name="validate" (click)="changeValue(false)" checked/> Invalid
+</p>
+<div *ngIf="isValid; then validBlock else invalidBlock"></div>
+<ng-template #validBlock>
+  This is valid block.
+</ng-template>
+<ng-template #invalidBlock>
+  This is invalid block.
+</ng-template>
+
+
+<!-- ng-container demo -->
+<h3> ng-container Example </h3>
+<select (change)="onSelectDay($event)">
+  <option value="">Select Day</option>
+  <option *ngFor="let day of dayList" value="{{day}}">
+       {{day}}
+  </option>
+</select>
+<div [ngSwitch]="selectedDay">
+  <ng-container *ngFor="let day of dayList">
+    <p *ngSwitchCase="day"> {{day}} selected</p>
+  </ng-container>
+</div>
